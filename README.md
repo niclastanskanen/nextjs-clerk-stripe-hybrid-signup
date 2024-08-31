@@ -10,11 +10,9 @@ This repository demonstrates how to build a hybrid sign-up and subscription form
 
 - **Live site**: https://nextjs-clerk-stripe-hybrid-signup.vercel.app/
 
-![Sign-Up Form](public/sign-up.png)
-
-![Sign-Up Form](public/verification.png)
-
-![Sign-Up Form](public/dashboard.png)
+<img src="public/sign-up.png" alt="Sign-Up Form" width="250"/>
+<img src="public/verification.png" alt="Verification" width="200"/>
+<img src="public/dashboard.png" alt="Dashboard" width="200"/>
 
 
 ## Features
