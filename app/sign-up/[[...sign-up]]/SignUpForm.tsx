@@ -22,8 +22,31 @@ const SignUpForm = ({ setVerifying }: Props) => {
   const [email, setEmail] = useState('')
 
   async function onSubmit() {
+    if (!isLoaded && !signUp) return null
+
     try {
-      
+      if (!elements || !stripe) {
+        return
+      }
+
+      let cardToken = ''
+      const cardEl = elements?.getElement('card')
+      if (cardEl) {
+        const res = await stripe?.createToken(cardEl)
+        cardToken = res?.token?.id || ''
+      }
+
+      await signUp.create({
+        emailAddress: email,
+        unsafeMetadata: {
+          cardToken,
+          priceId,
+        }
+      })
+
+      await signUp.prepareEmailAddressVerification()
+
+      setVerifying(true)
     } catch (error) {
       console.log(error)
     }
@@ -59,11 +82,11 @@ const SignUpForm = ({ setVerifying }: Props) => {
               onValueChange={(e) => setPriceId(e)}
             >
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="price_1PG1OcF35z7flJq7p803vcEP" id="option-one" />
+                <RadioGroupItem value="price_1PtnowHt8UXMeRVTBaGdhk6w" id="option-one" />
                 <Label htmlFor="option-one">Pro</Label>
               </div>
               <div className="flex items-center space-x-2">
-                <RadioGroupItem value="price_1PG1UwF35z7flJq7vRUrnOiv" id="option-two" />
+                <RadioGroupItem value="price_1PtnpSHt8UXMeRVTcY3NDTDP" id="option-two" />
                 <Label htmlFor="option-two">Enterprise</Label>
               </div>
             </RadioGroup>
