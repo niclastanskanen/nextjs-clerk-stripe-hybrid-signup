@@ -21,7 +21,9 @@ const SignUpForm = ({ setVerifying }: Props) => {
   const [priceId, setPriceId] = useState('')
   const [email, setEmail] = useState('')
 
-  async function onSubmit() {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     if (!isLoaded && !signUp) return null
 
     try {
@@ -53,7 +55,7 @@ const SignUpForm = ({ setVerifying }: Props) => {
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Card>
         <CardHeader>
           <CardTitle>Create your account!</CardTitle>
