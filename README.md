@@ -21,3 +21,15 @@ This repository demonstrates how to build a hybrid sign-up and subscription form
 - **Payment Integration**: Uses Stripe to handle subscription payments.
 - **Hybrid Form**: Combines user registration and subscription in one form.
 - **UI/Component Library**: [shadcn](https://ui.shadcn.com/)
+
+## Flow step by step
+
+1. When the user submits the form, the card details are sent to Stripe to tokenize the card. That token, and the selected product, are stored as `unsafeMetadata`.
+
+2. The app will signal to Clerk that a user is trying to sign up.
+3. Clerk sends the user an OTP to their email.
+4. The user enters the code into the application.
+5. The app signals to Clerk that the user completed the signup and the account should be created.
+6. The `user.created` webhook is triggered and the payload is sent to an API route in the application.
+7. The webhook handler uses the Stripe SDK to create a payment method, customer, and subscription.
+8. Once done, the user record is updated from Next and the user is allowed to proceed
