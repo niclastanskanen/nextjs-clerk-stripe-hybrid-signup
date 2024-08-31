@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 
-// import VerificationForm from './VerificationForm'
+import VerificationForm from './VerificationForm'
 import SignUpForm from './SignUpForm'
 
 
