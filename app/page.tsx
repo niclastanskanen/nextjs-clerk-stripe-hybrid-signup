@@ -1,10 +1,8 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { SignUpButton } from "@clerk/nextjs";
 
 export default function Home() {
   return (
-    <Button>
-      click
-    </Button>
+    <SignUpButton>Sign up</SignUpButton>
   );
 }
