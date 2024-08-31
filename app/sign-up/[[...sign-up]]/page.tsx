@@ -8,7 +8,7 @@ import VerificationForm from './VerificationForm'
 import SignUpForm from './SignUpForm'
 
 
-const page = () => {
+const SignUpPage = () => {
   const [verifying, setVerifying] = useState(false)
   const options = {
     appearance: {
@@ -32,4 +32,4 @@ const page = () => {
   )
 }
 
-export default page
+export default SignUpPage
